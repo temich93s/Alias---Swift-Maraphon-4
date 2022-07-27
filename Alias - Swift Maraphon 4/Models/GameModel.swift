@@ -7,6 +7,7 @@
 
 import Foundation
 
+// общая структура со свойствами типа, что бы у всех ViewController был доступ к общим данным
 struct GameModel {
     static var wordSets = [
         // наборы слов временные мы их поменяем
