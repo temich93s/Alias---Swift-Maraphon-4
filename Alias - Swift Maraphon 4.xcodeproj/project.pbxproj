@@ -58,13 +58,37 @@
 			children = (
 				AA72F5DD2890E5F90019C274 /* AppDelegate.swift */,
 				AA72F5DF2890E5F90019C274 /* SceneDelegate.swift */,
-				AA72F5E12890E5F90019C274 /* ViewController.swift */,
-				AA72F5E32890E5F90019C274 /* Main.storyboard */,
+				AA72F5F3289101A00019C274 /* Controllers */,
+				AA72F5F2289101990019C274 /* Views */,
+				AA72F5F1289101860019C274 /* Models */,
 				AA72F5E62890E5FA0019C274 /* Assets.xcassets */,
 				AA72F5E82890E5FA0019C274 /* LaunchScreen.storyboard */,
 				AA72F5EB2890E5FA0019C274 /* Info.plist */,
 			);
 			path = "Alias - Swift Maraphon 4";
+			sourceTree = "<group>";
+		};
+		AA72F5F1289101860019C274 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AA72F5F2289101990019C274 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AA72F5E32890E5F90019C274 /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AA72F5F3289101A00019C274 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AA72F5E12890E5F90019C274 /* ViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
