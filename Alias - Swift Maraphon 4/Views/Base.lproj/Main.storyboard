@@ -639,6 +639,9 @@
                                         <state key="normal" title="Главное меню">
                                             <color key="titleColor" name="444F5A"/>
                                         </state>
+                                        <connections>
+                                            <action selector="mainMenuPressed:" destination="s5Y-RU-m12" eventType="touchUpInside" id="NWM-aV-bEN"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="94y-pf-bZU">
                                         <rect key="frame" x="0.0" y="688" width="334" height="50"/>
@@ -651,6 +654,9 @@
                                         <state key="normal" title="Повторить игру">
                                             <color key="titleColor" name="444F5A"/>
                                         </state>
+                                        <connections>
+                                            <action selector="repeatGamePressed:" destination="s5Y-RU-m12" eventType="touchUpInside" id="B7v-47-ZJM"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>

@@ -18,8 +18,20 @@ class ResultsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        nameTeamNumber1Label.text = GameModel.nameTeamNumber1
+        nameTeamNumber2Label.text = GameModel.nameTeamNumber2
+        pointsTeamNumber1Label.text = String(GameModel.pointsTeamNumber1)
+        pointsTeamNumber2Label.text = String(GameModel.pointsTeamNumber2)
     }
+    
+    @IBAction func mainMenuPressed(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func repeatGamePressed(_ sender: UIButton) {
+        
+    }
+    
+    
     
 }
