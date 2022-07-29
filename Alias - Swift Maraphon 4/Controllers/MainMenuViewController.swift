@@ -23,6 +23,8 @@ class MainMenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let ddd = JokeModel()
+        ddd.fetchJoke()
 
         // Do any additional setup after loading the view.
     }

@@ -25,6 +25,8 @@ class GameViewController: UIViewController {
     @IBOutlet weak var specialStatusWordLabel: UILabel!
     @IBOutlet weak var controlButton: UIButton!
     
+    var jokeModel = JokeModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
