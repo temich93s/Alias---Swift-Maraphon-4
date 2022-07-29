@@ -23,6 +23,8 @@ class MainMenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let ddd = JokeModel()
+        ddd.fetchJoke()
 
         // Do any additional setup after loading the view.
     }
@@ -30,5 +32,12 @@ class MainMenuViewController: UIViewController {
     @IBAction func themeButtonPress(_ sender: UIButton) {
     }
     
-
+    @IBAction func rulesButtonPress(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "fromMainMenuVCToRulesVC", sender: self)
+    }
+    
+    @IBAction func gameButtonPress(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "fromMainMenuVCToGameVC", sender: self)
+    }
+    
 }

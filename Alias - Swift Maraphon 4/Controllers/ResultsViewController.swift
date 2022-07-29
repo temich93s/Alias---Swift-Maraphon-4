@@ -18,8 +18,18 @@ class ResultsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        nameTeamNumber1Label.text = GameModel.nameTeamNumber1
+        nameTeamNumber2Label.text = GameModel.nameTeamNumber2
+        pointsTeamNumber1Label.text = String(GameModel.pointsTeamNumber1)
+        pointsTeamNumber2Label.text = String(GameModel.pointsTeamNumber2)
     }
     
+    @IBAction func repeatGameButtonPress(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "fromResultsVCToGameVC", sender: self)
+    }
+    
+    @IBAction func mainMenuButtonPress(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "fromResultsVCToMainMenuVC", sender: self)
+    }
+
 }

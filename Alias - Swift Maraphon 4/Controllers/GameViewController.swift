@@ -29,6 +29,8 @@ class GameViewController: UIViewController {
     @IBOutlet weak var specialStatusWordLabel: UILabel!
     @IBOutlet weak var controlButton: UIButton!
     
+    var jokeModel = JokeModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         specialStatusWordLabel.text = ""
@@ -37,6 +39,8 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func controlButtonPress(_ sender: UIButton) {
+        //self.performSegue(withIdentifier: "fromGameVCToResultsVC", sender: self)
+
         
         updateText()
         

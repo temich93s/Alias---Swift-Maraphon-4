@@ -156,6 +156,9 @@
                                         <state key="normal" title="Правила">
                                             <color key="titleColor" name="444F5A"/>
                                         </state>
+                                        <connections>
+                                            <action selector="rulesButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oU5-CC-d5J"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GT7-q2-PLh">
                                         <rect key="frame" x="0.0" y="688" width="334" height="50"/>
@@ -168,6 +171,9 @@
                                         <state key="normal" title="Начать игру">
                                             <color key="titleColor" name="444F5A"/>
                                         </state>
+                                        <connections>
+                                            <action selector="gameButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="G0h-ls-NFQ"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -217,11 +223,13 @@
                         <outlet property="theme2Button" destination="QID-Kc-Tjb" id="AkV-bx-Wd7"/>
                         <outlet property="theme3Button" destination="4dR-1K-RBD" id="dOr-YT-wfh"/>
                         <outlet property="theme4Button" destination="qAT-W5-ScB" id="ofj-eE-x8C"/>
+                        <segue destination="5Ja-RW-KJo" kind="presentation" identifier="fromMainMenuVCToRulesVC" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="8kh-1N-IKZ"/>
+                        <segue destination="4SO-Pc-7fd" kind="presentation" identifier="fromMainMenuVCToGameVC" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="F08-eG-IOP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="618.84057971014499" y="77.678571428571431"/>
+            <point key="canvasLocation" x="1325" y="110"/>
         </scene>
         <!--Rules View Controller-->
         <scene sceneID="tmy-zm-vwS">
@@ -252,10 +260,19 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Описание правил" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sO5-Hw-TQx">
-                                        <rect key="frame" x="0.0" y="96" width="334" height="584"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Описание правил" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="sO5-Hw-TQx">
+                                        <rect key="frame" x="0.0" y="96" width="334" height="556"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                         <color key="textColor" name="FFFBE0"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kxg-is-azg">
+                                        <rect key="frame" x="0.0" y="660" width="334" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="eIk-OU-Wul"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ME-ir-wV4">
@@ -269,6 +286,9 @@
                                         <state key="normal" title="Главное меню">
                                             <color key="titleColor" name="444F5A"/>
                                         </state>
+                                        <connections>
+                                            <action selector="mainMenuButtonPress:" destination="5Ja-RW-KJo" eventType="touchUpInside" id="BxL-vh-0bA"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -294,11 +314,12 @@
                     </view>
                     <connections>
                         <outlet property="rulesLabel" destination="sO5-Hw-TQx" id="Dil-E5-xag"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="fromRulesVCToMainMenuVC" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="5ZH-TC-erV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Ci-pK-2M5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1421.7391304347827" y="77.678571428571431"/>
+            <point key="canvasLocation" x="2199" y="-697"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="YN5-rZ-uwz">
@@ -488,11 +509,12 @@
                         <outlet property="specialStatusWordLabel" destination="5IL-tE-J7Y" id="zVm-tM-KOR"/>
                         <outlet property="timeLeftLabel" destination="J6b-fM-m2P" id="1vB-L7-Ou2"/>
                         <outlet property="wordsAndJokesLabel" destination="rvq-il-grj" id="D5o-FP-FfC"/>
+                        <segue destination="s5Y-RU-m12" kind="presentation" identifier="fromGameVCToResultsVC" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="vOQ-Cg-2ds"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IbU-cE-N7k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2200" y="77.488151658767762"/>
+            <point key="canvasLocation" x="2199" y="110"/>
         </scene>
         <!--Results View Controller-->
         <scene sceneID="GUV-Ez-58u">
@@ -636,6 +658,9 @@
                                         <state key="normal" title="Главное меню">
                                             <color key="titleColor" name="444F5A"/>
                                         </state>
+                                        <connections>
+                                            <action selector="mainMenuButtonPress:" destination="s5Y-RU-m12" eventType="touchUpInside" id="hew-CQ-Nuz"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="94y-pf-bZU">
                                         <rect key="frame" x="0.0" y="688" width="334" height="50"/>
@@ -648,6 +673,9 @@
                                         <state key="normal" title="Повторить игру">
                                             <color key="titleColor" name="444F5A"/>
                                         </state>
+                                        <connections>
+                                            <action selector="repeatGameButtonPress:" destination="s5Y-RU-m12" eventType="touchUpInside" id="q1D-mH-Gr8"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -682,13 +710,19 @@
                         <outlet property="nameTeamNumber2Label" destination="cdm-lC-Jbe" id="Gn7-rd-DRp"/>
                         <outlet property="pointsTeamNumber1Label" destination="m2w-iB-bV5" id="YKX-F7-g1v"/>
                         <outlet property="pointsTeamNumber2Label" destination="I1B-hu-Koh" id="yxu-kF-4jF"/>
+                        <segue destination="4SO-Pc-7fd" kind="presentation" identifier="fromResultsVCToGameVC" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="4c4-ek-qQL"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="fromResultsVCToMainMenuVC" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="2zq-ma-d4K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GbG-bC-5xm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2995.6521739130435" y="77.678571428571431"/>
+            <point key="canvasLocation" x="3035" y="-697"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="F08-eG-IOP"/>
+        <segue reference="5ZH-TC-erV"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="chevron.right.circle.fill" catalog="system" width="128" height="121"/>
