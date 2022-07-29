@@ -21,5 +21,11 @@ class ResultsViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    @IBAction func repeatGameButtonPress(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "fromResultsVCToGameVC", sender: self)
+    }
     
+    @IBAction func mainMenuButtonPress(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "fromResultsVCToMainMenuVC", sender: self)
+    }
 }

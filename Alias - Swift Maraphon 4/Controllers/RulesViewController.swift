@@ -19,4 +19,10 @@ class RulesViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func mainMenuButtonPress(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "fromRulesVCToMainMenuVC", sender: self)
+    }
+    
+    
+    
 }

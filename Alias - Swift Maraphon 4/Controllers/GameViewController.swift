@@ -32,6 +32,7 @@ class GameViewController: UIViewController {
     }
 
     @IBAction func controlButtonPress(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "fromGameVCToResultsVC", sender: self)
     }
     
     @IBAction func skipButtonPress(_ sender: UIButton) {
