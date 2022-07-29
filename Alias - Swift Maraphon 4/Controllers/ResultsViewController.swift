@@ -24,14 +24,12 @@ class ResultsViewController: UIViewController {
         pointsTeamNumber2Label.text = String(GameModel.pointsTeamNumber2)
     }
     
-    @IBAction func mainMenuPressed(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+    @IBAction func repeatGameButtonPress(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "fromResultsVCToGameVC", sender: self)
     }
     
-    @IBAction func repeatGamePressed(_ sender: UIButton) {
-        
+    @IBAction func mainMenuButtonPress(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "fromResultsVCToMainMenuVC", sender: self)
     }
-    
-    
-    
+
 }

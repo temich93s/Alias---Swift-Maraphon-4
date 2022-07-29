@@ -35,4 +35,10 @@ class RulesViewController: UIViewController {
     }
     
 
+    @IBAction func mainMenuButtonPress(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "fromRulesVCToMainMenuVC", sender: self)
+    }
+    
+    
+    
 }
