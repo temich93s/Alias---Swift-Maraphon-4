@@ -6,9 +6,13 @@
 //
 
 import Foundation
+import UIKit
+
+
 
 // общая структура со свойствами типа, что бы у всех ViewController был доступ к общим данным
 struct GameModel {
+    
     static var wordSets = [
         // Млекопитающие
         ["Жираф", "Пищуха", "Заяц", "Кролик", "Бобр",
@@ -69,4 +73,8 @@ struct GameModel {
     static var pointsTeamNumber1 = 0
     static var pointsTeamNumber2 = 0
     static var jokeText = "Здесь должна была быть шутка, но что-то пошло не так 😭"
+    
+    static var roundTime = 60
+    
+    
 }

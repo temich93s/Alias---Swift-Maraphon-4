@@ -8,7 +8,7 @@
 import UIKit
 
 class GameViewController: UIViewController {
-
+    
     // numberRoundLabel - нужно отобразить номер раунда
     // nameTeamLabel - нужно отобразить имя команды чей ход (имя хранится в: GameModel.nameTeamNumber1 или GameModel.nameTeamNumber1)
     // timeLeftLabel - нужно сделать и отобразить таймер обратного отсчета
@@ -17,6 +17,10 @@ class GameViewController: UIViewController {
     // controlButton - кнопка должна менять свой текст и выполнение действий в соотвествующем режиме (режимы: "Старт" (игра начинается и запускается таймер), "Сбросить" (сбрасывает таймер и слова, начинается текущий раунд заново), "Следующий раунд" (все сбрасывается и начинается ход следующей команды), "Итоги игры" (переносит на окно с итогами игры))
     // correctAnswerButtonPress - слово угадано, добавляются очки в GameModel.pointsTeamNumber1 или GameModel.pointsTeamNumber2
     // skipButtonPress - пропуск слова, отнимая при этом очки в GameModel.pointsTeamNumber1 или GameModel.pointsTeamNumber2
+    
+    
+    var timer = Timer()
+    var wordNumber = 0
     
     @IBOutlet weak var numberRoundLabel: UILabel!
     @IBOutlet weak var nameTeamLabel: UILabel!
@@ -29,18 +33,66 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        specialStatusWordLabel.text = ""
+        timeLeftLabel.text = "Осталось: \(GameModel.roundTime) сек."
+        
     }
-
+    
     @IBAction func controlButtonPress(_ sender: UIButton) {
-        self.performSegue(withIdentifier: "fromGameVCToResultsVC", sender: self)
+        //self.performSegue(withIdentifier: "fromGameVCToResultsVC", sender: self)
+
+        
+        updateText()
+        
+        //Обнуление и запуск таймера, изменение тайтла кнопки
+        if controlButton.currentTitle == "СТАРТ" {
+            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
+            controlButton.setTitle("СБРОС", for: .normal)
+        } else if controlButton.currentTitle == "СБРОС" {
+            timer.invalidate()
+            controlButton.setTitle("СТАРТ", for: .normal)
+            GameModel.roundTime = 60
+            timeLeftLabel.text = "Осталось: \(GameModel.roundTime) сек."
+            wordNumber = 0
+            updateText()
+        }
+        
     }
     
     @IBAction func skipButtonPress(_ sender: UIButton) {
+        wordNumber += 1
+        updateText()
+
     }
     
     @IBAction func correctAnswerButtonPress(_ sender: UIButton) {
+        
+        wordNumber += 1
+        updateText()
+        
+        if nameTeamLabel.text == "Ходит: \(GameModel.nameTeamNumber1)" {
+            GameModel.pointsTeamNumber1 += 1
+            print(GameModel.pointsTeamNumber1)
+        } else {
+            GameModel.pointsTeamNumber2 += 1
+        }
     }
     
+    @objc func updateCounter() {
+        //Реализация таймера
+        if GameModel.roundTime > 0 {
+            GameModel.roundTime -= 1
+            timeLeftLabel.text = "Осталось: \(GameModel.roundTime) сек."
+        } else {
+            timer.invalidate()
+        }
+    }
+    
+    
+    func updateText() {
+        wordsAndJokesLabel.text = GameModel.wordSets[0][wordNumber]
+    }
+    
+    
 }
+
