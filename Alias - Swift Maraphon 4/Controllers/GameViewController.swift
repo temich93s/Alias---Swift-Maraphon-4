@@ -66,8 +66,9 @@ class GameViewController: UIViewController {
             GameModel.seconds = GameModel.lengthRound
             updateUI()
             wordsAndJokesLabel.text = ""
+        } else if sender.currentTitle == "Результаты"{
+            self.performSegue(withIdentifier: "fromGameVCToResultsVC", sender: self)
 
-            
         }
         
     }

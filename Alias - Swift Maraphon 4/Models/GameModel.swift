@@ -77,7 +77,7 @@ struct GameModel {
     static var pointsTeamNumber1 = 0
     static var pointsTeamNumber2 = 0
     static var jokeText = "Здесь должна была быть шутка, но что-то пошло не так 😭"
-    static var lengthRound = 60
+    static var lengthRound = 5
     static var seconds = lengthRound
     static var wordNumber = 0
 
