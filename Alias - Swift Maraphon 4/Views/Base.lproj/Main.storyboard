@@ -47,7 +47,7 @@
                                         </constraints>
                                         <color key="textColor" name="444F5A"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Имя команды № 2" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Y1-Ed-ac7">
                                         <rect key="frame" x="0.0" y="154" width="334" height="50"/>
@@ -70,21 +70,21 @@
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TH2-Wa-9J4">
                                         <rect key="frame" x="0.0" y="240" width="334" height="60"/>
-                                        <string key="text">Выбрана тема: 
-Тема № 1</string>
+                                        <string key="text">Выбрана тема:
+</string>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
                                         <color key="textColor" name="FCE38A"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pvx-R0-RhF">
                                         <rect key="frame" x="0.0" y="308" width="334" height="50"/>
-                                        <color key="backgroundColor" name="FFFBE0"/>
+                                        <color key="backgroundColor" red="0.99607843159999998" green="0.98431372640000003" blue="0.89019608500000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="sBv-PN-DDg"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Тема № 1">
+                                        <state key="normal" title="Животные">
                                             <color key="titleColor" name="444F5A"/>
                                         </state>
                                         <connections>
@@ -99,7 +99,7 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Тема № 2">
+                                        <state key="normal" title="IT">
                                             <color key="titleColor" name="444F5A"/>
                                         </state>
                                         <connections>
@@ -114,7 +114,7 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Тема № 3">
+                                        <state key="normal" title="Страны">
                                             <color key="titleColor" name="444F5A"/>
                                         </state>
                                         <connections>
@@ -129,7 +129,7 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Тема № 4">
+                                        <state key="normal" title="Черты характера">
                                             <color key="titleColor" name="444F5A"/>
                                         </state>
                                         <connections>
@@ -147,7 +147,7 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eLS-Ao-2Lv">
                                         <rect key="frame" x="0.0" y="630" width="334" height="50"/>
-                                        <color key="backgroundColor" name="FCE38A"/>
+                                        <color key="backgroundColor" red="0.97254908080000002" green="0.89411771299999998" blue="0.58823531870000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="cUK-py-58B"/>
                                         </constraints>
@@ -223,6 +223,7 @@
                         <outlet property="theme2Button" destination="QID-Kc-Tjb" id="AkV-bx-Wd7"/>
                         <outlet property="theme3Button" destination="4dR-1K-RBD" id="dOr-YT-wfh"/>
                         <outlet property="theme4Button" destination="qAT-W5-ScB" id="ofj-eE-x8C"/>
+                        <outlet property="topicSelection" destination="TH2-Wa-9J4" id="yeP-hf-TIp"/>
                         <segue destination="5Ja-RW-KJo" kind="presentation" identifier="fromMainMenuVCToRulesVC" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="8kh-1N-IKZ"/>
                         <segue destination="4SO-Pc-7fd" kind="presentation" identifier="fromMainMenuVCToGameVC" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="F08-eG-IOP"/>
                     </connections>

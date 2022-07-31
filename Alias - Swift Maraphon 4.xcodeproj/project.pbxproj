@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+
+		4A275B302896B730002AB3D6 /* correct.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4A275B2F2896B730002AB3D6 /* correct.mp3 */; };
+		4A275B322896B82C002AB3D6 /* skip.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4A275B312896B82C002AB3D6 /* skip.mp3 */; };
+		91FE250B289339F300963088 /* JokeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FE250A289339F300963088 /* JokeData.swift */; };
+
 		AA72F5DE2890E5F90019C274 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA72F5DD2890E5F90019C274 /* AppDelegate.swift */; };
 		AA72F5E02890E5F90019C274 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA72F5DF2890E5F90019C274 /* SceneDelegate.swift */; };
 		AA72F5E52890E5F90019C274 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA72F5E32890E5F90019C274 /* Main.storyboard */; };
@@ -22,6 +27,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A275B2F2896B730002AB3D6 /* correct.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = correct.mp3; path = ../../../../../../Downloads/correct.mp3; sourceTree = "<group>"; };
+		4A275B312896B82C002AB3D6 /* skip.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = skip.mp3; path = ../../../../../../Downloads/skip.mp3; sourceTree = "<group>"; };
+		91FE250A289339F300963088 /* JokeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeData.swift; sourceTree = "<group>"; };
+
 		AA72F5DA2890E5F90019C274 /* Alias - Swift Maraphon 4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Alias - Swift Maraphon 4.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA72F5DD2890E5F90019C274 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA72F5DF2890E5F90019C274 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +58,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A275B2E2896B6FF002AB3D6 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				4A275B2F2896B730002AB3D6 /* correct.mp3 */,
+				4A275B312896B82C002AB3D6 /* skip.mp3 */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		AA72F5D12890E5F90019C274 = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +94,7 @@
 				AA72F5E62890E5FA0019C274 /* Assets.xcassets */,
 				AA72F5E82890E5FA0019C274 /* LaunchScreen.storyboard */,
 				AA72F5EB2890E5FA0019C274 /* Info.plist */,
+				4A275B2E2896B6FF002AB3D6 /* Sounds */,
 			);
 			path = "Alias - Swift Maraphon 4";
 			sourceTree = "<group>";
@@ -167,8 +186,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A275B302896B730002AB3D6 /* correct.mp3 in Resources */,
 				AA72F5EA2890E5FA0019C274 /* LaunchScreen.storyboard in Resources */,
 				AA72F5E72890E5FA0019C274 /* Assets.xcassets in Resources */,
+				4A275B322896B82C002AB3D6 /* skip.mp3 in Resources */,
 				AA72F5E52890E5F90019C274 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
