@@ -55,6 +55,7 @@ class GameViewController: UIViewController {
             sender.setTitle("Старт", for: .normal)
             timer.invalidate()
             GameModel.seconds = GameModel.lengthRound
+            wordsAndJokesLabel.text = ""
             timeLeftLabel.text = "Осталось: \(GameModel.lengthRound) сек."
             
         } else if sender.currentTitle == "Следущий раунд" || sender.currentTitle == "Следущая команда" {
