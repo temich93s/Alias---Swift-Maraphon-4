@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		91FE250B289339F300963088 /* JokeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FE250A289339F300963088 /* JokeData.swift */; };
 		AA72F5DE2890E5F90019C274 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA72F5DD2890E5F90019C274 /* AppDelegate.swift */; };
 		AA72F5E02890E5F90019C274 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA72F5DF2890E5F90019C274 /* SceneDelegate.swift */; };
 		AA72F5E52890E5F90019C274 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA72F5E32890E5F90019C274 /* Main.storyboard */; };
@@ -23,7 +22,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		91FE250A289339F300963088 /* JokeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeData.swift; sourceTree = "<group>"; };
 		AA72F5DA2890E5F90019C274 /* Alias - Swift Maraphon 4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Alias - Swift Maraphon 4.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA72F5DD2890E5F90019C274 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA72F5DF2890E5F90019C274 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,7 +86,6 @@
 				AA72F5FC289105CF0019C274 /* GameModel.swift */,
 				AA72F5FE28914F0E0019C274 /* JokeModel.swift */,
 				AA72F600289156D80019C274 /* AVPlayerModel.swift */,
-				91FE250A289339F300963088 /* JokeData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -185,7 +182,6 @@
 			files = (
 				AA72F5F9289105320019C274 /* GameViewController.swift in Sources */,
 				AA72F5F5289104E60019C274 /* MainMenuViewController.swift in Sources */,
-				91FE250B289339F300963088 /* JokeData.swift in Sources */,
 				AA72F601289156D80019C274 /* AVPlayerModel.swift in Sources */,
 				AA72F5DE2890E5F90019C274 /* AppDelegate.swift in Sources */,
 				AA72F5F7289105220019C274 /* RulesViewController.swift in Sources */,
