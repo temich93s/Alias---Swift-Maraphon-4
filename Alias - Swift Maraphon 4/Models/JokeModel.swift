@@ -25,31 +25,26 @@ struct JokeModel {
             
             let session = URLSession(configuration:  .default)
             
-            let task = session.dataTask(with: url, completionHandler: handle(data:response:error:))
+            let task = session.dataTask(with: url) { (data, response, error) in
+                if let err = error {
+                    print(err.localizedDescription)
+                }
                 
+                if let safeData = data {
+                    
+                    if let safeJoke = String(data: safeData, encoding: .windowsCP1251) {
+                        
+                        var currentJoke = safeJoke
+                        var rangeToCut = currentJoke.startIndex..<currentJoke.index(currentJoke.startIndex, offsetBy: 12)
+                        currentJoke.removeSubrange(rangeToCut)
+                        rangeToCut = currentJoke.index(currentJoke.endIndex, offsetBy: -2)..<currentJoke.endIndex
+                        currentJoke.removeSubrange(rangeToCut)
+                        GameModel.jokeText = currentJoke
+                        print(GameModel.jokeText)
+                    }
+                }
+            }
             task.resume()
         }
     }
-
-    func handle(data: Data?, response: URLResponse?, error: Error?) {
-        if error != nil {
-            print(error!)
-            return
-        }
-        
-        if let safeData = data {
-            let dataString = String(data: safeData, encoding: .windowsCP1251)
-            print(dataString)
-        }
-    }
-    
-        func parseJSON(jokeData: Data) {
-            let decoder = JSONDecoder()
-            do {
-                let decodedData = try decoder.decode(JokeData.self, from: jokeData)
-                print(decodedData.content)
-            } catch {
-                print(error)
-            }
-        }
 }
