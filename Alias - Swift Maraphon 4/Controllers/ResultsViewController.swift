@@ -25,10 +25,12 @@ class ResultsViewController: UIViewController {
     }
     
     @IBAction func repeatGameButtonPress(_ sender: UIButton) {
+        GameModel.newGame()
         self.performSegue(withIdentifier: "fromResultsVCToGameVC", sender: self)
     }
     
     @IBAction func mainMenuButtonPress(_ sender: UIButton) {
+        GameModel.newGame()
         self.performSegue(withIdentifier: "fromResultsVCToMainMenuVC", sender: self)
     }
 
