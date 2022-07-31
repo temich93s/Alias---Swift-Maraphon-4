@@ -77,7 +77,7 @@ struct GameModel {
     static var pointsTeamNumber1 = 0
     static var pointsTeamNumber2 = 0
     static var jokeText = "Здесь должна была быть шутка, но что-то пошло не так 😭"
-    static var lengthRound = 60
+    static var lengthRound = 5
     static var seconds = lengthRound
     static var wordNumber = 0
 
@@ -88,8 +88,7 @@ struct GameModel {
         case nameTeamNumber2: pointsTeamNumber2 += 1
         default: break
         }
-        print("Команда 1 очки = \(pointsTeamNumber1)")
-        print("Команда 2 очки = \(pointsTeamNumber2)")
+        
     }
     static func pointMinus() {
         switch currentTeam {
@@ -97,8 +96,7 @@ struct GameModel {
         case nameTeamNumber2 where pointsTeamNumber2 > 0: pointsTeamNumber2 -= 1
         default: break
         }
-        print("Команда 1 очки = \(pointsTeamNumber1)")
-        print("Команда 2 очки = \(pointsTeamNumber2)")
+        
     }
     
     static func timerStart() {

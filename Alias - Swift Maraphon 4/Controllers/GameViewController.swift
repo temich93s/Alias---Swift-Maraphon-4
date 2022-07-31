@@ -77,6 +77,7 @@ class GameViewController: UIViewController {
         } else {
             GameModel.pointMinus()
             GameModel.wordNumberChange()
+            AVPlayerModel.playSound(sound: "skip")
             updateUI()
         }
         
@@ -88,6 +89,7 @@ class GameViewController: UIViewController {
         } else {
             GameModel.pointPlus()
             GameModel.wordNumberChange()
+            AVPlayerModel.playSound(sound: "correct")
             updateUI()
         }
     }
