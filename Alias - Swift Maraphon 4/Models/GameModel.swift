@@ -13,6 +13,7 @@ import UIKit
 // общая структура со свойствами типа, что бы у всех ViewController был доступ к общим данным
 struct GameModel {
     
+    
     static var wordSets = [
         // Млекопитающие
         ["Жираф", "Пищуха", "Заяц", "Кролик", "Бобр",
@@ -67,14 +68,69 @@ struct GameModel {
          "застенчивый", "мудрый", "эмоциональный", "эгоцентрик", "серьёзный",
          "юморной", "необычный", "ленивый", "мрачный", "дружелюбный"],
     ]
-    static var nameTeamNumber1 = "Команда № 1"
-    static var nameTeamNumber2 = "Команда № 2"
+    static var currentGame = 1
+    static var currentRound = 1
+    static var nameTeamNumber1 = "Команда 1"
+    static var nameTeamNumber2 = "Команда 2"
+    static var currentTeam = nameTeamNumber1
     static var currentTheme = wordSets[0]
     static var pointsTeamNumber1 = 0
     static var pointsTeamNumber2 = 0
     static var jokeText = "Здесь должна была быть шутка, но что-то пошло не так 😭"
+    static var lengthRound = 60
+    static var seconds = lengthRound
+    static var wordNumber = 0
+
     
-    static var roundTime = 60
+    static func pointPlus() {
+        switch currentTeam {
+        case nameTeamNumber1: pointsTeamNumber1 += 1
+        case nameTeamNumber2: pointsTeamNumber2 += 1
+        default: break
+        }
+        print("Команда 1 очки = \(pointsTeamNumber1)")
+        print("Команда 2 очки = \(pointsTeamNumber2)")
+    }
+    static func pointMinus() {
+        switch currentTeam {
+        case nameTeamNumber1 where pointsTeamNumber1 > 0: pointsTeamNumber1 -= 1
+        case nameTeamNumber2 where pointsTeamNumber2 > 0: pointsTeamNumber2 -= 1
+        default: break
+        }
+        print("Команда 1 очки = \(pointsTeamNumber1)")
+        print("Команда 2 очки = \(pointsTeamNumber2)")
+    }
     
+    static func timerStart() {
+        seconds = 60
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+            if seconds > 0 {
+                seconds -= 1
+            } else {
+                timer.invalidate()
+            }
+        }
+    }
+    static func whatCurrentTeam(round: Int) {
+        if round % 2 == 1 {
+            currentTeam = nameTeamNumber1
+        } else {
+            currentTeam = nameTeamNumber2
+        }
+    }
+    static func changeCurrentRound() {
+        if currentGame % 2 != 0 {
+            currentRound += 1
+        }
+    }
+    
+    static func wordNumberChange() {
+        wordNumber = Int.random(in: 0...currentTheme.count)
+        if wordNumber < currentTheme.count - 1 {
+            wordNumber += 1
+        } else {
+            wordNumber = 0
+        }
+    }
     
 }
