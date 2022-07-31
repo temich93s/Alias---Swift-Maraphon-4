@@ -19,8 +19,6 @@ class GameViewController: UIViewController {
     // skipButtonPress - пропуск слова, отнимая при этом очки в GameModel.pointsTeamNumber1 или GameModel.pointsTeamNumber2
     
     
-    var timer = Timer()
-    var wordNumber = 0
     
     @IBOutlet weak var numberRoundLabel: UILabel!
     @IBOutlet weak var nameTeamLabel: UILabel!
@@ -30,67 +28,99 @@ class GameViewController: UIViewController {
     @IBOutlet weak var controlButton: UIButton!
     
     var jokeModel = JokeModel()
+    var timer = Timer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Стартовое отображение элементов
+        wordsAndJokesLabel.text = ""
         specialStatusWordLabel.text = ""
-        timeLeftLabel.text = "Осталось: \(GameModel.roundTime) сек."
+        controlButton.setTitle("Старт", for: .normal)
+        numberRoundLabel.text = "Раунд #\(GameModel.currentRound)"
+        nameTeamLabel.text = "Играют \(GameModel.currentTeam)"
+        timeLeftLabel.text = "Осталось: \(GameModel.lengthRound) сек."
         
     }
     
     @IBAction func controlButtonPress(_ sender: UIButton) {
-        //self.performSegue(withIdentifier: "fromGameVCToResultsVC", sender: self)
-
+        //Переключатель кнопки
         
-        updateText()
-        
-        //Обнуление и запуск таймера, изменение тайтла кнопки
-        if controlButton.currentTitle == "СТАРТ" {
-            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
-            controlButton.setTitle("СБРОС", for: .normal)
-        } else if controlButton.currentTitle == "СБРОС" {
+        if sender.currentTitle == "Старт" {
+            sender.setTitle("Сбросить время", for: .normal)
+            //Таймер
+            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
+            GameModel.wordNumberChange()
+            updateUI()
+        } else if sender.currentTitle == "Сбросить время" {
+            sender.setTitle("Старт", for: .normal)
             timer.invalidate()
-            controlButton.setTitle("СТАРТ", for: .normal)
-            GameModel.roundTime = 60
-            timeLeftLabel.text = "Осталось: \(GameModel.roundTime) сек."
-            wordNumber = 0
-            updateText()
+            GameModel.seconds = GameModel.lengthRound
+            timeLeftLabel.text = "Осталось: \(GameModel.lengthRound) сек."
+            
+        } else if sender.currentTitle == "Следущий раунд" || sender.currentTitle == "Следущая команда" {
+            sender.setTitle("Старт", for: .normal)
+            GameModel.currentGame += 1
+            GameModel.changeCurrentRound()
+            GameModel.whatCurrentTeam(round: GameModel.currentGame)
+            GameModel.seconds = GameModel.lengthRound
+            updateUI()
+            wordsAndJokesLabel.text = ""
+
+            
         }
         
     }
     
     @IBAction func skipButtonPress(_ sender: UIButton) {
-        wordNumber += 1
-        updateText()
-
+        if GameModel.seconds == GameModel.lengthRound {
+            return
+        } else {
+            GameModel.pointMinus()
+            GameModel.wordNumberChange()
+            updateUI()
+        }
+        
     }
     
     @IBAction func correctAnswerButtonPress(_ sender: UIButton) {
-        
-        wordNumber += 1
-        updateText()
-        
-        if nameTeamLabel.text == "Ходит: \(GameModel.nameTeamNumber1)" {
-            GameModel.pointsTeamNumber1 += 1
-            print(GameModel.pointsTeamNumber1)
+        if GameModel.seconds == GameModel.lengthRound {
+            return
         } else {
-            GameModel.pointsTeamNumber2 += 1
+            GameModel.pointPlus()
+            GameModel.wordNumberChange()
+            updateUI()
         }
     }
     
-    @objc func updateCounter() {
-        //Реализация таймера
-        if GameModel.roundTime > 0 {
-            GameModel.roundTime -= 1
-            timeLeftLabel.text = "Осталось: \(GameModel.roundTime) сек."
+    @objc func fireTimer() {
+        if GameModel.seconds > 0 {
+            GameModel.seconds -= 1
+            updateUI()
+            
         } else {
             timer.invalidate()
+            if GameModel.currentGame % 2 != 0 {
+                controlButton.setTitle("Следущая команда", for: .normal)
+            } else {
+                controlButton.setTitle("Следущий раунд", for: .normal)
+            }
+            if GameModel.currentGame == 6 {
+                controlButton.setTitle("Результаты", for: .normal)
+                timeLeftLabel.text = ""
+            }
+            GameModel.seconds = GameModel.lengthRound
+            updateUI()
+            wordsAndJokesLabel.text = GameModel.jokeText
+
         }
+        
     }
     
-    
-    func updateText() {
-        wordsAndJokesLabel.text = GameModel.wordSets[0][wordNumber]
+    func updateUI() {
+        numberRoundLabel.text = "Раунд #\(GameModel.currentRound)"
+        nameTeamLabel.text = "Играют \(GameModel.currentTeam)"
+        timeLeftLabel.text = "Осталось: \(GameModel.seconds) сек."
+        wordsAndJokesLabel.text = GameModel.currentTheme[GameModel.wordNumber]
     }
     
     
