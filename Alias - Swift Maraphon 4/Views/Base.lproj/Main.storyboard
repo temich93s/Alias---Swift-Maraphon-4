@@ -375,7 +375,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="248" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="nGo-FV-O4p">
                                         <rect key="frame" x="0.0" y="206" width="334" height="288"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" text="СЛОВО" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rvq-il-grj">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" text="СЛОВО" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rvq-il-grj">
                                                 <rect key="frame" x="8" y="8" width="318" height="234"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="40"/>
                                                 <color key="textColor" name="444F5A"/>
