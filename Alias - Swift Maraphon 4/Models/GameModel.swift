@@ -77,7 +77,10 @@ struct GameModel {
     static var pointsTeamNumber1 = 0
     static var pointsTeamNumber2 = 0
     static var jokeText = "Здесь должна была быть шутка, но что-то пошло не так 😭"
-    static var lengthRound = 5
+    
+    //Длина раунда
+    static var lengthRound = 60
+    
     static var seconds = lengthRound
     static var wordNumber = 0
 
@@ -129,6 +132,14 @@ struct GameModel {
         } else {
             wordNumber = 0
         }
+    }
+    static func newGame() {
+        currentTeam = nameTeamNumber1
+        currentGame = 1
+        currentRound = 1
+        pointsTeamNumber1 = 0
+        pointsTeamNumber2 = 0
+        seconds = lengthRound
     }
     
 }

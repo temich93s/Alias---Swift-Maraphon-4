@@ -424,7 +424,7 @@
                                                     <constraint firstAttribute="width" constant="1" id="xlL-7s-4fP"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VYn-tl-9yH">
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VYn-tl-9yH">
                                                 <rect key="frame" x="24" y="0.5" width="120" height="119"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="120" id="N1R-sn-i17"/>
@@ -446,7 +446,7 @@
                                                     <constraint firstAttribute="width" constant="1" id="81A-nw-o5m"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WgC-Ni-dzn">
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WgC-Ni-dzn">
                                                 <rect key="frame" x="190.5" y="0.5" width="120" height="119"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="120" id="CIh-Xj-7v7"/>
@@ -505,10 +505,13 @@
                     </view>
                     <connections>
                         <outlet property="controlButton" destination="OJA-OQ-bHo" id="lZv-Ip-AoZ"/>
+                        <outlet property="correctAnswerButton" destination="VYn-tl-9yH" id="euN-Es-RA8"/>
                         <outlet property="nameTeamLabel" destination="B5z-z6-JCF" id="xLp-7b-iCx"/>
                         <outlet property="numberRoundLabel" destination="rFo-ik-CYT" id="hz1-lu-PwU"/>
+                        <outlet property="skipAnswerButton" destination="WgC-Ni-dzn" id="306-ix-mvG"/>
                         <outlet property="specialStatusWordLabel" destination="5IL-tE-J7Y" id="zVm-tM-KOR"/>
                         <outlet property="timeLeftLabel" destination="J6b-fM-m2P" id="1vB-L7-Ou2"/>
+                        <outlet property="wordsAndJokesBack" destination="nGo-FV-O4p" id="VRt-Nf-tra"/>
                         <outlet property="wordsAndJokesLabel" destination="rvq-il-grj" id="D5o-FP-FfC"/>
                         <segue destination="s5Y-RU-m12" kind="presentation" identifier="fromGameVCToResultsVC" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="vOQ-Cg-2ds"/>
                     </connections>
