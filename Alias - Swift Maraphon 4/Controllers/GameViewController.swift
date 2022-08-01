@@ -9,17 +9,6 @@ import UIKit
 
 class GameViewController: UIViewController {
     
-    // numberRoundLabel - нужно отобразить номер раунда
-    // nameTeamLabel - нужно отобразить имя команды чей ход (имя хранится в: GameModel.nameTeamNumber1 или GameModel.nameTeamNumber1)
-    // timeLeftLabel - нужно сделать и отобразить таймер обратного отсчета
-    // wordsAndJokesLabel - нужно отобразить слово которое сейчас нужно отгадать (в конце раунда в этом лейбле будет отображаться шутка, шутка шранится в свойстве: GameModel.jokeText )
-    // specialStatusWordLabel - нужно отобразить по правилам игры является ли слово "слово-действием", или "последним словом" которое могут отгадывать все команды
-    // controlButton - кнопка должна менять свой текст и выполнение действий в соотвествующем режиме (режимы: "Старт" (игра начинается и запускается таймер), "Сбросить" (сбрасывает таймер и слова, начинается текущий раунд заново), "Следующий раунд" (все сбрасывается и начинается ход следующей команды), "Итоги игры" (переносит на окно с итогами игры))
-    // correctAnswerButtonPress - слово угадано, добавляются очки в GameModel.pointsTeamNumber1 или GameModel.pointsTeamNumber2
-    // skipButtonPress - пропуск слова, отнимая при этом очки в GameModel.pointsTeamNumber1 или GameModel.pointsTeamNumber2
-    
-    
-    
     @IBOutlet weak var numberRoundLabel: UILabel!
     @IBOutlet weak var nameTeamLabel: UILabel!
     @IBOutlet weak var timeLeftLabel: UILabel!
@@ -28,137 +17,125 @@ class GameViewController: UIViewController {
     @IBOutlet weak var controlButton: UIButton!
     @IBOutlet weak var correctAnswerButton: UIButton!
     @IBOutlet weak var skipAnswerButton: UIButton!
+    @IBOutlet weak var wordsAndJokesAndSpecialStatusWordStackView: UIStackView!
     
-    @IBOutlet weak var wordsAndJokesBack: UIStackView!
-    
-    var jokeModel = JokeModel()
     var timer = Timer()
     
+    //---
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         //Стартовое отображение элементов
         specialStatusWordLabel.text = ""
-        controlButton.setTitle("Старт", for: .normal)
+        controlButton.setTitle("Начать игру", for: .normal)
         numberRoundLabel.text = "Раунд #\(GameModel.currentRound)"
-        nameTeamLabel.text = "Играют \(GameModel.currentTeam)"
-        timeLeftLabel.text = "Осталось: \(GameModel.lengthRound) сек."
-        wordsAndJokesLabel.text = GameModel.jokeText
-        wordsAndJokesBack.backgroundColor = UIColor(named: "FCE38A")
-        
-        
-        
+        nameTeamLabel.text = "Играет \(GameModel.currentTeam)"
+        timeLeftLabel.text = "Осталось: \(GameModel.lengthWholeRound) сек."
+        wordsAndJokesLabel.text = "Играет команда: \(GameModel.currentTeam)"
+        wordsAndJokesAndSpecialStatusWordStackView.backgroundColor = UIColor(named: "FCE38A")
+        correctAnswerButton.isEnabled = false
+        skipAnswerButton.isEnabled = false
     }
     
     @IBAction func controlButtonPress(_ sender: UIButton) {
         //Переключатель кнопки
         
-        if sender.currentTitle == "Старт" {
-            sender.setTitle("Сбросить время", for: .normal)
+        if sender.currentTitle == "Начать игру" {
+            sender.setTitle("Сбросить раунд", for: .normal)
+            JokeModel.fetchJoke()
+            wordsAndJokesAndSpecialStatusWordStackView.backgroundColor = UIColor(named: "FFFBE0")
             //Таймер
-            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
+            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(countdown), userInfo: nil, repeats: true)
+            //+++
             GameModel.wordNumberChange()
             correctAnswerButton.isEnabled = true
             skipAnswerButton.isEnabled = true
+            //+++
             updateUI()
-        } else if sender.currentTitle == "Сбросить время" {
-            sender.setTitle("Старт", for: .normal)
+        
+        //---
+        } else if sender.currentTitle == "Сбросить раунд" {
+            sender.setTitle("Начать игру", for: .normal)
             timer.invalidate()
-            //GameModel.seconds = GameModel.lengthRound
+            GameModel.lengthCurrentRound = GameModel.lengthWholeRound
             wordsAndJokesLabel.text = ""
-            timeLeftLabel.text = "Осталось: \(GameModel.lengthRound) сек."
+            timeLeftLabel.text = "Осталось: \(GameModel.lengthCurrentRound) сек."
             correctAnswerButton.isEnabled = false
             skipAnswerButton.isEnabled = false
-            
-        } else if sender.currentTitle == "Следущий раунд" || sender.currentTitle == "Следущая команда" {
-            sender.setTitle("Старт", for: .normal)
+        
+        //---
+        } else if sender.currentTitle == "Следущий раунд" || sender.currentTitle == "Ход следующей команды" {
+            sender.setTitle("Начать игру", for: .normal)
             GameModel.currentGame += 1
             GameModel.changeCurrentRound()
             GameModel.whatCurrentTeam(round: GameModel.currentGame)
-            GameModel.seconds = GameModel.lengthRound
+            GameModel.lengthCurrentRound = GameModel.lengthWholeRound
+            wordsAndJokesAndSpecialStatusWordStackView.backgroundColor = UIColor(named: "FCE38A")
             correctAnswerButton.isEnabled = false
             skipAnswerButton.isEnabled = false
             updateUI()
             wordsAndJokesLabel.text = "Играет команда: \(GameModel.currentTeam)"
-        } else if sender.currentTitle == "Результаты"{
-            self.performSegue(withIdentifier: "fromGameVCToResultsVC", sender: self)
-            
-        }
         
+        //---
+        } else if sender.currentTitle == "Результаты" {
+            self.performSegue(withIdentifier: "fromGameVCToResultsVC", sender: self)
+        }
     }
     
+    //---
     @IBAction func skipButtonPress(_ sender: UIButton) {
-        
         GameModel.pointMinus()
+        //+++
         GameModel.wordNumberChange()
         AVPlayerModel.playSound(sound: "skip")
         updateUI()
-        if timer.isValid {
-        } else {
-        wordsAndJokesLabel.text = GameModel.jokeText
-        wordsAndJokesBack.backgroundColor = UIColor(named: "FCE38A")
-        correctAnswerButton.isEnabled = false
-        skipAnswerButton.isEnabled = false
-        }
-        
     }
     
+    //---
     @IBAction func correctAnswerButtonPress(_ sender: UIButton) {
-        
         GameModel.pointPlus()
+        //+++
         GameModel.wordNumberChange()
         AVPlayerModel.playSound(sound: "correct")
         updateUI()
-        if timer.isValid {
-        } else {
-        wordsAndJokesLabel.text = GameModel.jokeText
-        wordsAndJokesBack.backgroundColor = UIColor(named: "FCE38A")
-        correctAnswerButton.isEnabled = false
-        skipAnswerButton.isEnabled = false
-        }
-        
     }
     
-    @objc func fireTimer() {
-        if GameModel.seconds > 0 {
-            GameModel.seconds -= 1
+    //---
+    @objc func countdown() {
+        if GameModel.lengthCurrentRound > 0 {
+            GameModel.lengthCurrentRound -= 1
             updateUI()
-            
         } else {
+            // .invalidate() - остановка таймера
             timer.invalidate()
+            
+            // определяем чей следующий раунд/ход
             if GameModel.currentGame % 2 != 0 {
-                controlButton.setTitle("Следущая команда", for: .normal)
+                controlButton.setTitle("Ход следующей команды", for: .normal)
             } else {
                 controlButton.setTitle("Следущий раунд", for: .normal)
             }
             
-            
+            // если все ходы закончились, то меняем режим кнопки controlButton на "Результаты"
             if GameModel.currentGame == 6 {
                 controlButton.setTitle("Результаты", for: .normal)
                 timeLeftLabel.text = ""
             }
-            updateUI()
-            controlButton.isEnabled = false
-            controlButton.alpha = 0.5
-            correctAnswerButton.isEnabled = true
-            skipAnswerButton.isEnabled = true
-            
-            
-            
+            wordsAndJokesLabel.text = GameModel.jokeText
+            wordsAndJokesAndSpecialStatusWordStackView.backgroundColor = UIColor(named: "FCE38A")
+            correctAnswerButton.isEnabled = false
+            skipAnswerButton.isEnabled = false
         }
-        
     }
     
+    //---
     func updateUI() {
         numberRoundLabel.text = "Раунд #\(GameModel.currentRound)"
-        nameTeamLabel.text = "Играют \(GameModel.currentTeam)"
-        timeLeftLabel.text = "Осталось: \(GameModel.seconds) сек."
+        nameTeamLabel.text = "Играет \(GameModel.currentTeam)"
+        timeLeftLabel.text = "Осталось: \(GameModel.lengthCurrentRound) сек."
+        //+++
         wordsAndJokesLabel.text = GameModel.currentTheme[GameModel.wordNumber]
-        controlButton.isEnabled = true
-        controlButton.alpha = 1
-        wordsAndJokesBack.backgroundColor = UIColor(named: "FFFBE0")
-        
     }
-    
     
 }
 

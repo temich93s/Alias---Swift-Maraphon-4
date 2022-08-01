@@ -8,8 +8,6 @@
 import UIKit
 
 class RulesViewController: UIViewController {
-
-    // Тут нужно придумать текстовку правил (краткую) и отобразить их в UILabel
     
     @IBOutlet weak var rulesLabel: UILabel!
     
@@ -29,16 +27,9 @@ class RulesViewController: UIViewController {
             Удачи!
             """
     }
-    
-    @IBAction func mainMenuPressed(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
 
     @IBAction func mainMenuButtonPress(_ sender: UIButton) {
         self.performSegue(withIdentifier: "fromRulesVCToMainMenuVC", sender: self)
     }
-    
-    
-    
+     
 }

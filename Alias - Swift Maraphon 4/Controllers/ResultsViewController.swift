@@ -8,8 +8,6 @@
 import UIKit
 
 class ResultsViewController: UIViewController {
-
-    // Здесь нужно отобразить в соотвествующий лейблах имена команд (тут они хранятся: GameModel.nameTeamNumber1 и GameModel.nameTeamNumber1) и их счет (тут они хранятся: GameModel.pointsTeamNumber1 и GameModel.pointsTeamNumber2)
     
     @IBOutlet weak var nameTeamNumber1Label: UILabel!
     @IBOutlet weak var nameTeamNumber2Label: UILabel!
