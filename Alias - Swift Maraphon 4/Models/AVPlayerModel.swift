@@ -8,15 +8,20 @@
 import UIKit
 import AVFoundation
 
+// плеер у которого есть метод воспроизводящий звук, по заданному имени файла
 struct AVPlayerModel {
-    // Здесь надо написать 2 метода каждый из которых будет возвращать звук, первый звук при пропуске слова, второй при правильном ответе
     
     static var player: AVAudioPlayer!
     
     static func playSound(sound: String) {
-        let url = Bundle.main.url(forResource: sound, withExtension: "mp3")
-        player = try! AVAudioPlayer(contentsOf: url!)
-        player.play()
+        if let url = Bundle.main.url(forResource: sound, withExtension: "mp3") {
+            do {
+                player = try AVAudioPlayer(contentsOf: url)
+                player.play()
+            }
+            catch {
+                print(error.localizedDescription)
+            }
+        }
     }
-
 }
