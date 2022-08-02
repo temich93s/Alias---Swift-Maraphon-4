@@ -25,7 +25,6 @@ struct JokeModel {
                         rangeToCut = currentJoke.index(currentJoke.endIndex, offsetBy: -2)..<currentJoke.endIndex
                         currentJoke.removeSubrange(rangeToCut)
                         GameModel.jokeText = currentJoke
-                        print(GameModel.jokeText)
                     }
                 }
             }

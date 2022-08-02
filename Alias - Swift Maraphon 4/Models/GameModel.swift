@@ -75,9 +75,10 @@ struct GameModel {
     static var pointsTeamNumber1 = 0
     static var pointsTeamNumber2 = 0
     static var jokeText = "Здесь должна была быть шутка, но что-то пошло не так 😭"
+    static var pointsCurrentMove = 0
     
     //Длина раунда
-    static var lengthWholeRound = 20
+    static var lengthWholeRound = 60
     static var lengthCurrentRound = lengthWholeRound
     static var wordNumber = 0
 
@@ -93,8 +94,8 @@ struct GameModel {
     // отнимаем 1 очко за правильный ответ
     static func pointMinus() {
         switch currentTeam {
-        case nameTeamNumber1 where pointsTeamNumber1 > 0: pointsTeamNumber1 -= 1
-        case nameTeamNumber2 where pointsTeamNumber2 > 0: pointsTeamNumber2 -= 1
+        case nameTeamNumber1: pointsTeamNumber1 -= 1
+        case nameTeamNumber2: pointsTeamNumber2 -= 1
         default: break
         }
     }
@@ -115,10 +116,9 @@ struct GameModel {
         }
     }
     
-    //+++
+    // утстанавливаем следующее слово
     static func wordNumberChange() {
-        wordNumber = Int.random(in: 0...currentTheme.count)
-        if wordNumber < currentTheme.count - 1 {
+        if wordNumber < 7 {
             wordNumber += 1
         } else {
             wordNumber = 0
@@ -133,6 +133,7 @@ struct GameModel {
         pointsTeamNumber1 = 0
         pointsTeamNumber2 = 0
         lengthCurrentRound = lengthWholeRound
+        wordNumber = 0
     }
     
 }

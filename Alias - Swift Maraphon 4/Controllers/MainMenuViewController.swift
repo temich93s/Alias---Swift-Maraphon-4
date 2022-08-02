@@ -52,6 +52,7 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        
         if let nameTeamNumber1 = nameTeamNumber1TextField.text {
             if nameTeamNumber1 == "" {
                 GameModel.nameTeamNumber1 = "Команда 1"
@@ -59,6 +60,7 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate {
                 GameModel.nameTeamNumber1 = nameTeamNumber1
             }
         }
+        
         if let nameTeamNumber2 = nameTeamNumber2TextField.text {
             if nameTeamNumber2 == "" {
                 GameModel.nameTeamNumber2 = "Команда 2"
@@ -66,6 +68,7 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate {
                 GameModel.nameTeamNumber2 = nameTeamNumber2
             }
         }
+        
         nameTeamNumber1TextField.text = GameModel.nameTeamNumber1
         nameTeamNumber2TextField.text = GameModel.nameTeamNumber2
     }
@@ -74,14 +77,10 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
         
         switch sender.currentTitle {
-        case theme1Button.currentTitle:
-            GameModel.currentTheme = GameModel.wordSets[0]
-        case theme2Button.currentTitle:
-            GameModel.currentTheme = GameModel.wordSets[1]
-        case theme3Button.currentTitle:
-            GameModel.currentTheme = GameModel.wordSets[2]
-        case theme4Button.currentTitle:
-            GameModel.currentTheme = GameModel.wordSets[3]
+        case theme1Button.currentTitle: GameModel.currentTheme = GameModel.wordSets[0]
+        case theme2Button.currentTitle: GameModel.currentTheme = GameModel.wordSets[1]
+        case theme3Button.currentTitle: GameModel.currentTheme = GameModel.wordSets[2]
+        case theme4Button.currentTitle: GameModel.currentTheme = GameModel.wordSets[3]
         default: break
         }
 
